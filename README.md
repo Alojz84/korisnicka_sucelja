@@ -1,5 +1,15 @@
 # korisnicka_sucelja
 
+# Semester Project <!-- omit in toc -->
+
+- [Project Structure](#project-structure)
+- [My Project Links](#my-project-links)
+  - [Semester Project](#semester-project)
+  - [Semester Assignments](#semester-assignments)
+- [Project Requirements](#project-requirements)
+  - [Web Application Requirements](#web-application-requirements)
+  - [Project Demonstration](#project-demonstration)
+
 ## Project Structure
 
 - **`/korisnicka_sucelja`**: The source code of the main project
@@ -16,7 +26,7 @@
 
 ### Semester Assignments
 
-- Link to Assignment 1: [**Assignment 1 - Video pitch**]([URL_TO_ASSIGNMENT_1](https://app.animaker.com/video/XU8T0PS7LWNFXNN7))
+- Link to Assignment 1: [**Assignment 1 - Video pitch**]([https://app.animaker.com/video/XU8T0PS7LWNFXNN7])
 
 ## Project Requirements
 
