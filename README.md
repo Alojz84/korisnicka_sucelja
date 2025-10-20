@@ -1,2 +1,40 @@
 # korisnicka_sucelja
-project
+
+## Project Structure
+
+- **`/korisnicka_sucelja`**: The source code of the main project
+- **`/assignments`**: Results of semester assignments
+- **`/docs`**: Documentation
+
+## My Project Links
+
+### Semester Project
+
+- Link to your production version: [**Production Version**](URL_TO_PRODUCTION_VERSION) <!-- Replace with actual URL -->
+- Link to your final report: [**Final Report**](URL_TO_FINAL_REPORT) <!-- Replace with actual URL -->
+<!-- Add more as necessary -->
+
+### Semester Assignments
+
+- Link to Assignment 1: [**Assignment 1 - Video pitch**]([URL_TO_ASSIGNMENT_1](https://app.animaker.com/video/XU8T0PS7LWNFXNN7))
+
+## Project Requirements
+
+### Web Application Requirements
+
+- [ ] The application can be accessed from a web browser
+- [ ] It is responsive and works on different device sizes (desktop, tablet, mobile)
+- [ ] Users can search and filter available salon appointments
+- [ ] Application supports user login for clients to manage their bookings
+- [ ] Includes a blog page with:
+ • Hair care tips and trends
+ • Short tutorial videos
+ • Code snippets
+- [ ] Content is partially managed through a remote headless CMS
+### Project Demonstration
+
+- [ ] Production version is deployed online via Vercel / Netlify / VPS
+- [ ] Created a video demonstration showing booking, canceling, and reminder features
+- [ ] Performed a usability evaluation with test users to assess the interface simplicity
+- [ ] Conducted PageSpeed Insights performance analysis to ensure fast loading
+- [ ] Included analysis results and user feedback in the final report
