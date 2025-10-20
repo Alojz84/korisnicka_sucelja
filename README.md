@@ -26,7 +26,7 @@
 
 ### Semester Assignments
 
-- Link to Assignment 1: [**Assignment 1 - Video pitch**]([https://app.animaker.com/video/XU8T0PS7LWNFXNN7])
+- Link to Assignment 1: [**Assignment 1 - Video pitch**](https://app.animaker.com/video/XU8T0PS7LWNFXNN7)
 
 ## Project Requirements
 
