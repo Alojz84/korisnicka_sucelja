@@ -123,3 +123,14 @@ Develop an information architecture for this project based on the card sorting m
     - **Resources:** Collection of useful resources and guides.
     - **Social Media Links:** Links to social media.
     - **Newsletter Sign-Up:** Form to subscribe to the newsletter via email.
+  
+
+## Site map
+<img src="">
+
+## LLM prompts
+Prompt 1 – User Personas
+Generate a set of three realistic user personas for a barber booking web application that allows customers to easily browse available barbers, view services, prices, and working hours, and book appointments online. The personas should represent different types of users with varying lifestyles, motivations, and comfort levels with technology. Each persona should include demographic information, behavioral traits, goals, and frustrations related to scheduling barber appointments online.
+
+Prompt 2 – Information Architecture and Sitemap
+Using the card sorting method, create a clear and logical information architecture and sitemap for a barber booking platform. The structure should reflect how users naturally explore and organize information when booking appointments, selecting services, viewing barbers, and managing upcoming bookings. The output should describe the main sections and subpages of the website, as well as their relationships and hierarchy.
