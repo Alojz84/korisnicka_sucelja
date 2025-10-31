@@ -126,7 +126,7 @@ Develop an information architecture for this project based on the card sorting m
   
 
 ## Site map
-<img src="">
+<img src="./sitemap.png">
 
 ## LLM prompts
 Prompt 1 – User Personas
