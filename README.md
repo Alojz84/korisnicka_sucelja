@@ -27,7 +27,7 @@
 ### Semester Assignments
 
 - Link to Assignment 1: [**Assignment 1 - Video pitch**](https://app.animaker.com/video/XU8T0PS7LWNFXNN7)
-- Link to Assingment 2: [**Assignment 2 - User personas**](assigments/user-personas)
+- Link to Assingment 2: [**Assignment 2 - User personas**](Assigments/user-personas)
 
 ## Project Requirements
 
