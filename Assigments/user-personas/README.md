@@ -84,52 +84,79 @@ Develop an information architecture for this project based on the card sorting m
 
  **Home**
  
-**Application Info**: Overview of the web application and its functionalities, including browsing services, viewing barbers, and learning more about the salon.
-Services: Displays all available services offered by the salon.
-Service Categories: Organized list of services grouped by type (e.g., Haircuts, Beard Trims, Styling).
-Service Details: Detailed information for each service, such as duration, price, and description.
-Barbers: Section showcasing all barbers working in the salon.
-Barber Profiles: Individual barber pages showing experience, specialties, services, and ratings.
-Add to Favorites: Option to mark barbers as favorites for quicker access in future bookings.
-About Salon: Information about the salon, including background, team details, and mission.
+1. **Application Info**:
+
+        Services: Displays all available services offered by the salon.
+
+        Service Categories: Organized list of services grouped by type (e.g., Haircuts, Beard Trims, Styling).
+
+        Service Details: Detailed information for each service, such as duration, price, and description.
+
+        Barbers: Section showcasing all barbers working in the salon.
+
+        Barber Profiles: Individual barber pages showing experience, specialties, services, and ratings.
+
+        Add to Favorites: Option to mark barbers as favorites for quicker access in future bookings.
+
+        About Salon: Information about the salon, including background, team details, and mission.
+
 
     
-**Booking**
-    Select Barber: Choose a preferred barber from the available list or from favorites.
-    Choose Service: Pick a specific service type (e.g., haircut, beard trim, styling).
-    Pick Date & Time: Select a preferred date and time using an interactive calendar that displays available slots.
-    Confirm Appointment: Review all booking details and confirm the appointment.
+2. **Booking**
 
-**Reviews**
+        Select Barber: Choose a preferred barber from the available list or from favorites.
 
-Leave Review: Form for users to rate and leave feedback for completed services.
-View Reviews: Browse reviews from other users to help make informed decisions when choosing barbers or services.
+        Choose Service: Pick a specific service type (e.g., haircut, beard trim, styling).
+    
+        Pick Date & Time: Select a preferred date and time using an interactive calendar that displays available slots.
+    
+        Confirm Appointment: Review all booking details and confirm the appointment.
+    
 
-**User Account**
+3. **Reviews**
 
-Dashboard: Central hub showing an overview of user activity and quick access to key features.
-Profile: Manage personal information, contact details, and preferences.
-My Bookings: View current, past, and upcoming appointments.
-Settings: Adjust user account preferences and notification options.
+        Leave Review: Form for users to rate and leave feedback for completed services.
 
-**Authentication**
+        View Reviews: Browse reviews from other users to help make informed decisions when choosing barbers or services.
 
-Log In: Page for registered users to sign in.
-Sign Up: Registration form for new users to create an account.
-Forgot Password: Option to recover or reset a forgotten password.
 
-**Notifications**
+4. **User Account**
 
-Notifications section displaying alerts for upcoming appointments, special offers, and barber messages.
+        Dashboard: Central hub showing an overview of user activity and quick access to key features.
 
-**Footer Page**
+        Profile: Manage personal information, contact details, and preferences.
 
-Contact: Contact form and salon contact information.
-Privacy Policy: Details about data protection and how user information is handled.
-Terms & Conditions: Information on the website’s terms of use and user responsibilities.
+        My Bookings: View current, past, and upcoming appointments.
+
+        Settings: Adjust user account preferences and notification options.
+
+
+5. **Authentication**
+
+        Log In: Page for registered users to sign in.
+
+        Sign Up: Registration form for new users to create an account.
+
+        Forgot Password: Option to recover or reset a forgotten password.
+
+
+6. **Notifications**
+
+
+        Notifications section displaying alerts for upcoming appointments, special offers, and barber messages.
+
+
+7. **Footer Page**
+
+        Contact: Contact form and salon contact information.
+
+        Privacy Policy: Details about data protection and how user information is handled.
+
+        Terms & Conditions: Information on the website’s terms of use and user responsibilities.
+
   
 
-## Site map
+## Sitemap
 <img src="./sitemapp.png">
 
 ## LLM prompts
