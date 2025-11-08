@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+/* Malo default stila da sve izgleda uredno */
+html, body { height: 100%; }
+body { background: white; color: #0f172a; }
+a { text-decoration: none; }
