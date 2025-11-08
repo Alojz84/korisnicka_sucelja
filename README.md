@@ -28,6 +28,8 @@
 
 - Link to Assignment 1: [**Assignment 1 - Video pitch**](https://app.animaker.com/video/XU8T0PS7LWNFXNN7)
 - Link to Assingment 2: [**Assignment 2 - User personas**](Assigments/user-personas)
+- Link to Assingment 2: [**Assignment 3 - Next.js**](korisnicka-sucelja-kcrp.vercel.app)
+
 
 ## Project Requirements
 
