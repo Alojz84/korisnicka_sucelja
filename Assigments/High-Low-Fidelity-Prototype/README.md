@@ -154,5 +154,5 @@ To ensure inclusive design:
 ## Figma Prototype
 
 🔗 **Figma link:**  
-(Insert your Figma prototype URL here)
+https://www.figma.com/make/pSi3VqrjasWGkyNcfA5AN5/Barber-Booking-App?fullscreen=1&t=FfCVg5RYeYcG84v4-1
 
