@@ -8,6 +8,7 @@ const links = [
   { href: "/application-info", label: "Application Info" },
   { href: "/booking", label: "Booking" },
   { href: "/reviews", label: "Reviews" },
+  { href: "/blog", label: "Blog" },
   { href: "/user", label: "User" },
   { href: "/auth/login", label: "Login" },
   { href: "/notifications", label: "Notifications" },
@@ -20,7 +21,10 @@ export default function Navbar() {
   return (
     <header className="border-b">
       <nav className="mx-auto max-w-6xl flex flex-wrap items-center gap-4 p-4">
-        <Link href="/" className="font-bold text-lg">EasyCut</Link>
+        <Link href="/" className="font-bold text-lg">
+          EasyCut
+        </Link>
+
         <ul className="flex flex-wrap gap-3 text-sm">
           {links.map((l) => (
             <li key={l.href}>
