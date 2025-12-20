@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 
 async function getPost(id: string): Promise<Post | null> {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-    cache: "no-store",
+    next: { revalidate: 60 }, // osvježi podatke svakih 60 sekundi
   });
 
   if (res.status === 404) return null;
@@ -23,10 +23,17 @@ async function getPost(id: string): Promise<Post | null> {
   return res.json();
 }
 
-export default async function Page({ params }: { params: { id: string } }) {
-  if (!params?.id) notFound();
+export const dynamicParams = false;
 
-  const post = await getPost(params.id);
+
+export default async function Page(
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
+
+  if (!id) notFound();
+
+  const post = await getPost(id);
   if (!post) notFound();
 
   return (
