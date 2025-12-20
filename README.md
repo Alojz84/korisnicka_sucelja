@@ -30,7 +30,7 @@
 - Link to Assingment 2: [**User personas**](Assigments/user-personas)
 - Link to Assignment 3: [**Next.js - Deploying Application**](https://korisnicka-sucelja-kcrp.vercel.app/)
 - Link to Assignment 4: [**Low/High-fidelity prototype**](Assigments/High-Low-Fidelity-Prototype)
-- Link to Assignment 3: [**Next.js - Dynamic routes, data fetching**](https://korisnicka-sucelja-kcrp.vercel.app/)
+- Link to Assignment 5: [**Next.js - Dynamic routes, data fetching**](https://korisnicka-sucelja-kcrp.vercel.app/)
   
 ## Project Requirements
 
