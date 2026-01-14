@@ -1,14 +1,28 @@
 import Link from "next/link";
+import PageHero from "@/components/PageHero";
+
 const items = ["dashboard", "profile", "my-bookings", "settings"];
+
 export default function User() {
   return (
     <>
-      <h1 className="text-2xl font-semibold mb-4">User Account</h1>
-      <ul className="space-y-2">
-        {items.map(i => (
-          <li key={i}><Link className="underline" href={`/user/${i}`}>{i}</Link></li>
-        ))}
-      </ul>
+      <PageHero title="Korisnički račun" subtitle="Profil, rezervacije i postavke na jednom mjestu." />
+
+      <section className="section">
+        <div className="container">
+          <div className="linkGrid">
+            {items.map((i) => (
+              <Link key={i} href={`/user/${i}`} className="linkCard">
+                <div>
+                  <p className="linkTitle">{i}</p>
+                  <p className="linkDesc">Otvori sekciju</p>
+                </div>
+                <span className="linkArrow">›</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 }

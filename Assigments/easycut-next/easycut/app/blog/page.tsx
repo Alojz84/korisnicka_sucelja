@@ -1,16 +1,10 @@
 import Link from "next/link";
+import PageHero from "@/components/PageHero";
 
-type Post = {
-  id: number;
-  title: string;
-  body: string;
-};
+type Post = { id: number; title: string; body: string };
 
 async function getPosts(): Promise<Post[]> {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
-    cache: "no-store",
-  });
-
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts", { cache: "no-store" });
   if (!res.ok) throw new Error("Failed to fetch posts");
   return res.json();
 }
@@ -19,31 +13,29 @@ export default async function Page() {
   const posts = await getPosts();
 
   return (
-    <main className="mx-auto max-w-3xl space-y-6">
-      <header className="space-y-2">
-        <h1 className="text-3xl font-bold">EasyCut Blog</h1>
-        <p className="text-sm opacity-80">
-          Dynamic routes + server-side data fetching (JSONPlaceholder).
-        </p>
-      </header>
+    <>
+      <PageHero
+        title="EasyCut Blog"
+        subtitle="Dynamic routes + server-side data fetching (JSONPlaceholder)."
+      />
 
-      <section className="space-y-4">
-        {posts.slice(0, 10).map((post) => (
-          <article key={post.id} className="rounded-xl border p-4 space-y-2">
-            <h2 className="text-lg font-semibold">
-              <Link className="hover:underline" href={`/blog/${post.id}`}>
-                {post.title}
+      <section className="section">
+        <div className="container">
+          <div className="linkGrid">
+            {posts.slice(0, 12).map((post) => (
+              <Link key={post.id} href={`/blog/${post.id}`} className="linkCard">
+                <div>
+                  <p className="linkTitle">{post.title}</p>
+                  <p className="linkDesc">
+                    {post.body.length > 90 ? post.body.slice(0, 90) + "…" : post.body}
+                  </p>
+                </div>
+                <span className="linkArrow">›</span>
               </Link>
-            </h2>
-            <p className="text-sm opacity-80">
-              {post.body.length > 140 ? post.body.slice(0, 140) + "…" : post.body}
-            </p>
-            <Link className="text-sm hover:underline" href={`/blog/${post.id}`}>
-              Read more →
-            </Link>
-          </article>
-        ))}
+            ))}
+          </div>
+        </div>
       </section>
-    </main>
+    </>
   );
 }

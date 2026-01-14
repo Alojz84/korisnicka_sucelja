@@ -1,22 +1,28 @@
 import Link from "next/link";
-const pages = [
-  "services",
-  "service-categories",
-  "service-details",
-  "barbers",
-  "barber-profiles",
-  "favorites",
-  "about",
-];
+import PageHero from "@/components/PageHero";
+
+const pages = ["services","service-categories","service-details","barbers","barber-profiles","favorites","about"];
+
 export default function ApplicationInfo() {
   return (
     <>
-      <h1 className="text-2xl font-semibold mb-4">Application Info</h1>
-      <ul className="space-y-2">
-        {pages.map(p => (
-          <li key={p}><Link className="underline" href={`/application-info/${p}`}>{p}</Link></li>
-        ))}
-      </ul>
+      <PageHero title="Application Info" subtitle="Stranice i informacije o aplikaciji." />
+
+      <section className="section">
+        <div className="container">
+          <div className="linkGrid">
+            {pages.map((p) => (
+              <Link key={p} href={`/application-info/${p}`} className="linkCard">
+                <div>
+                  <p className="linkTitle">{p}</p>
+                  <p className="linkDesc">Otvori stranicu</p>
+                </div>
+                <span className="linkArrow">›</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 }

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const links = [
   { href: "/", label: "Home" },
@@ -17,29 +18,59 @@ const links = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
   return (
-    <header className="border-b">
-      <nav className="mx-auto max-w-6xl flex flex-wrap items-center gap-4 p-4">
-        <Link href="/" className="font-bold text-lg">
-          EasyCut
-        </Link>
+    <header className="navWrap">
+      <div className="container">
+        <div className="navBar">
+          <Link className="brand" href="/">
+            <span className="brandIcon">✂️</span>
+            <span>EasyCut</span>
+          </Link>
 
-        <ul className="flex flex-wrap gap-3 text-sm">
-          {links.map((l) => (
-            <li key={l.href}>
+          <nav className="navLinks" aria-label="Primary">
+            {links.map((l) => (
               <Link
+                key={l.href}
                 href={l.href}
-                className={`px-2 py-1 rounded hover:underline ${
-                  pathname === l.href ? "font-semibold underline" : ""
-                }`}
+                className={pathname === l.href ? "navActive" : undefined}
               >
                 {l.label}
               </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+            ))}
+            <Link className="cta" href="/booking">
+              Rezerviraj
+            </Link>
+          </nav>
+
+          <button
+            className="burger"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Menu"
+          >
+            {open ? "✕" : "☰"}
+          </button>
+        </div>
+
+        {open && (
+          <div className="mobileMenu">
+            {links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className={pathname === l.href ? "navActive" : undefined}
+              >
+                {l.label}
+              </Link>
+            ))}
+            <Link className="cta" href="/booking" onClick={() => setOpen(false)}>
+              Rezerviraj
+            </Link>
+          </div>
+        )}
+      </div>
     </header>
   );
 }
