@@ -25,9 +25,6 @@ export default function Home() {
               <a className="btn btnPrimary" href="/booking">
                 Rezerviraj termin
               </a>
-              <a className="btn btnOutline" href="/reviews">
-                Pogledaj brijače
-              </a>
             </div>
 
             <div className="heroScroll" aria-hidden="true">🖱️</div>
@@ -42,8 +39,10 @@ export default function Home() {
 
           <div className="grid3">
             <div className="stepCard">
-              <div className="stepNum">01</div>
-              <div className="stepIcon">👥</div>
+              <div className="stepHead">
+                <div className="stepNum">01</div>
+                <div className="stepIcon">👥</div>
+              </div>
               <div className="stepTitle">Odaberite brijača</div>
               <div className="stepText">
                 Pregledajte profile brijača, njihove usluge, cijene i ocjene.
@@ -51,8 +50,10 @@ export default function Home() {
             </div>
 
             <div className="stepCard">
-              <div className="stepNum">02</div>
-              <div className="stepIcon">📅</div>
+              <div className="stepHead">
+                <div className="stepNum">02</div>
+                <div className="stepIcon">📅</div>
+              </div>
               <div className="stepTitle">Odaberite uslugu i termin</div>
               <div className="stepText">
                 Izaberite željenu uslugu i slobodan datum i vrijeme.
@@ -60,8 +61,10 @@ export default function Home() {
             </div>
 
             <div className="stepCard">
-              <div className="stepNum">03</div>
-              <div className="stepIcon">✅</div>
+              <div className="stepHead">
+                <div className="stepNum">03</div>
+                <div className="stepIcon">✅</div>
+              </div>
               <div className="stepTitle">Potvrdite rezervaciju</div>
               <div className="stepText">
                 Potvrda stiže odmah — bez poziva i čekanja.
@@ -80,7 +83,7 @@ export default function Home() {
             {[
               { img: "/landing/service-1.jpg", title: "Šišanje", text: "Profesionalno šišanje prilagođeno vašem stilu." },
               { img: "/landing/service-2.jpg", title: "Trimanje brade", text: "Precizno oblikovanje i trimanje brade." },
-              { img: "/landing/service-3.jpg", title: "Styling", text: "Moderan styling za fresh look." },
+              { img: "/landing/service-3.jpg", title: "Stiliziranje", text: "Moderno stiliziranje za svjež izgled." },
               { img: "/landing/service-4.jpg", title: "Kombinirane usluge", text: "Šišanje + brada u jednom terminu." },
             ].map((s) => (
               <div className="mediaCard" key={s.title}>
@@ -94,9 +97,6 @@ export default function Home() {
           </div>
 
           <div className="centerBtn">
-            <a className="btn btnOutline" href="/booking">
-              Pogledaj sve usluge
-            </a>
           </div>
         </div>
       </section>

@@ -1,24 +1,57 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/application-info", label: "Application Info" },
-  { href: "/booking", label: "Booking" },
-  { href: "/reviews", label: "Reviews" },
-  { href: "/blog", label: "Blog" },
-  { href: "/user", label: "User" },
-  { href: "/auth/login", label: "Login" },
-  { href: "/notifications", label: "Notifications" },
-  { href: "/footer/contact", label: "Contact" },
+  { href: "/", label: "Početna" },
+  { href: "/application-info", label: "O aplikaciji" },
+  { href: "/reviews", label: "Recenzije" },
+  { href: "/contact", label: "Kontakt" },
 ];
+
+type Me = { id: string; email: string; name: string } | null;
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
+  const [me, setMe] = useState<Me>(null);
+  const [checked, setChecked] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/auth/me", { cache: "no-store" as any })
+      .then((r) => r.json())
+      .then((data) => setMe(data))
+      .catch(() => setMe(null))
+      .finally(() => setChecked(true));
+  }, [pathname]);
+
+  async function logout() {
+    await fetch("/api/auth/logout", { method: "POST" });
+    setMe(null);
+    router.refresh();
+    router.push("/");
+  }
+
+  const AuthItem = () => {
+    if (!checked) return null;
+
+    if (me) {
+      return (
+        <button className="cta" onClick={logout} type="button">
+          Odjava
+        </button>
+      );
+    }
+
+    return (
+      <Link className={pathname === "/auth/login" ? "navActive" : undefined} href="/auth/login">
+        Prijava
+      </Link>
+    );
+  };
 
   return (
     <header className="navWrap">
@@ -39,6 +72,9 @@ export default function Navbar() {
                 {l.label}
               </Link>
             ))}
+
+            <AuthItem />
+
             <Link className="cta" href="/booking">
               Rezerviraj
             </Link>
@@ -65,6 +101,23 @@ export default function Navbar() {
                 {l.label}
               </Link>
             ))}
+
+            {checked && (
+              me ? (
+                <button className="cta" onClick={() => { setOpen(false); logout(); }} type="button">
+                  Odjava
+                </button>
+              ) : (
+                <Link
+                  href="/auth/login"
+                  onClick={() => setOpen(false)}
+                  className={pathname === "/auth/login" ? "navActive" : undefined}
+                >
+                  Prijava
+                </Link>
+              )
+            )}
+
             <Link className="cta" href="/booking" onClick={() => setOpen(false)}>
               Rezerviraj
             </Link>

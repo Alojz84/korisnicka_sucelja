@@ -10,7 +10,7 @@ export default function LandingPage() {
         <div className="heroOverlay" />
         <div className="heroInner">
           <div className="container center">
-            <h1 className="heroTitle">Rezervirajte termin kod brijača brzo i jednostavno</h1>
+            <h1 className="heroTitle">Rezervirajte termin brzo i jednostavno</h1>
             <p className="heroSub">
               Pronađite najboljeg brijača, odaberite uslugu i termin — bez poziva i čekanja.
             </p>
@@ -33,22 +33,28 @@ export default function LandingPage() {
 
           <div className="grid3">
             <div className="stepCard">
-              <div className="stepNum">01</div>
-              <div className="stepIcon">👥</div>
+              <div className="stepHead">
+                <div className="stepNum">1</div>
+                <div className="stepIcon">👥</div>
+              </div>
               <div className="stepTitle">Odaberite brijača</div>
               <div className="stepText">Pregledajte profile brijača, njihove usluge, cijene i ocjene.</div>
             </div>
 
             <div className="stepCard">
-              <div className="stepNum">02</div>
-              <div className="stepIcon">📅</div>
+              <div className="stepHead">
+                <div className="stepNum">2</div>
+                <div className="stepIcon">📅</div>
+              </div>
               <div className="stepTitle">Odaberite uslugu i termin</div>
               <div className="stepText">Izaberite željenu uslugu i slobodan datum i vrijeme.</div>
             </div>
 
             <div className="stepCard">
-              <div className="stepNum">03</div>
-              <div className="stepIcon">✅</div>
+              <div className="stepHead">
+                <div className="stepNum">3</div>
+                <div className="stepIcon">✅</div>
+              </div>
               <div className="stepTitle">Potvrdite rezervaciju</div>
               <div className="stepText">Potvrda stiže odmah — bez poziva i čekanja.</div>
             </div>
@@ -65,7 +71,7 @@ export default function LandingPage() {
             {[
               { img: "/landing/service-1.jpg", title: "Šišanje", text: "Profesionalno šišanje prilagođeno vašem stilu i preferencijama." },
               { img: "/landing/service-2.jpg", title: "Trimanje brade", text: "Precizno oblikovanje i trimanje brade za savršen izgled." },
-              { img: "/landing/service-3.jpg", title: "Styling", text: "Moderne tehnike stylinga za moderan i fresh look." },
+              { img: "/landing/service-3.jpg", title: "Stiliziranje", text: "Moderne tehnike stiliziranja za moderan i svjež izgled." },
               { img: "/landing/service-4.jpg", title: "Kombinirane usluge", text: "Šišanje + brada - Kompletna njega u jednom terminu." },
             ].map((s) => (
               <div className="mediaCard" key={s.title}>
