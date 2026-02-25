@@ -13,7 +13,6 @@ The project was developed through multiple assignment stages, including idea def
 This project was completed through a series of structured assignments, progressing from concept development to a fully deployed, production-ready web application.
 
 ## 1. Idea Pitch
-- 🔗 Link to Assignment 1: [Idea Pitch](/assignments/assignment-1-idea-pitch)
 
 ### Objectives
 - Identify common problems users face when booking barber appointments (phone calls, unclear availability, lack of online booking)
@@ -24,7 +23,6 @@ This project was completed through a series of structured assignments, progressi
 ---
 
 ## 2. User Personas and Information Architecture
-- 🔗 Link to Assignment 2: [User Personas and Information Architecture](/assignments/assignment-2-personas-ia)
 
 ### Outcomes
 - Defined user personas representing different customer profiles
@@ -36,7 +34,6 @@ This project was completed through a series of structured assignments, progressi
 ---
 
 ## 3. Next.js – Application Deployment
-- 🔗 Link to Assignment 3: [Next.js – Deploying Application](https://easycut.vercel.app)
 
 ### Outcomes
 - Initialized a Next.js project using the App Router
@@ -48,7 +45,6 @@ This project was completed through a series of structured assignments, progressi
 ---
 
 ## 4. Low/High-Fidelity Prototype
-- 🔗 Link to Assignment 4: [Low/High-Fidelity Prototype](/assignments/assignment-4-prototype)
 
 ### Outcomes
 - High-fidelity desktop homepage and booking flow prototype
@@ -59,7 +55,6 @@ This project was completed through a series of structured assignments, progressi
 ---
 
 ## 5. Next.js – Dynamic Routes and Data Fetching
-- 🔗 Link to Assignment 5: [Next.js – Dynamic Routes and Data Fetching](https://easycut.vercel.app)
 
 ### Outcomes
 - Implemented dynamic routes for services, barbers, and bookings
