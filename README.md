@@ -21,7 +21,7 @@
 ### Semester Project
 
 - Link to your production version: [**Production Version**](https://korisnicka-sucelja-two.vercel.app/) <!-- Replace with actual URL -->
-- Link to your final report: [**Final Report**](URL_TO_FINAL_REPORT) <!-- Replace with actual URL -->
+- Link to your final report: [**Final Report**](https://github.com/Alojz84/korisnicka_sucelja/blob/main/Assigments/README.md) <!-- Replace with actual URL -->
 <!-- Add more as necessary -->
 
 ### Semester Assignments
