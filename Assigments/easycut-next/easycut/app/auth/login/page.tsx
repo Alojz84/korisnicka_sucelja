@@ -1,149 +1,156 @@
 "use client";
 
-import Link from "next/link";
+import { Suspense, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 
-export default function LoginPage() {
+function isValidEmail(email: string) {
+  // jednostavna i pouzdana provjera: nesto@nesto.domena
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+}
+
+function LoginContent() {
   const router = useRouter();
-  const sp = useSearchParams();
-  const next = sp.get("next") || "/booking";
+  const searchParams = useSearchParams();
+
+  const nextUrl = useMemo(() => {
+    const n = searchParams.get("next");
+    return n && n.startsWith("/") ? n : "/booking";
+  }, [searchParams]);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [msg, setMsg] = useState<string | null>(null);
-  const [fieldErrors, setFieldErrors] = useState<{
-    email?: string;
-    password?: string;
-  }>({});
-  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    // ako je već ulogiran, pošalji ga dalje
-    fetch("/api/auth/me", { cache: "no-store" as any })
-      .then((r) => r.json())
-      .then((me) => {
-        if (me) router.replace(next);
-      })
-      .catch(() => {});
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const [touched, setTouched] = useState<{ email: boolean; password: boolean }>({
+    email: false,
+    password: false,
+  });
+
+  const [submitting, setSubmitting] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
+
+  const emailError =
+    !email.trim()
+      ? "Unesite email."
+      : !isValidEmail(email)
+      ? "Email mora biti u formatu npr. example@gmail.com."
+      : null;
+
+  const passwordError = !password ? "Unesite lozinku." : null;
+
+  const canSubmit = !emailError && !passwordError && !submitting;
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setFormError(null);
+    setTouched({ email: true, password: true });
 
-    // Client-side validacija (brza i jasna poruka korisniku)
-    const nextErrors: { email?: string; password?: string } = {};
-    const emailTrim = email.trim();
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailTrim);
+    if (!canSubmit) return;
 
-    if (!emailTrim) nextErrors.email = "Upišite email.";
-    else if (!emailOk)
-      nextErrors.email = "Email mora biti u formatu npr. example@gmail.com";
-    if (!password) nextErrors.password = "Upišite lozinku.";
+    try {
+      setSubmitting(true);
 
-    setFieldErrors(nextErrors);
-    setMsg(null);
-    if (Object.keys(nextErrors).length > 0) return;
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim(), password }),
+      });
 
-    setLoading(true);
-
-    const res = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: emailTrim, password }),
-    });
-
-    setLoading(false);
-
-    if (!res.ok) {
       const data = await res.json().catch(() => ({}));
-      setMsg(data?.error ?? "Prijava nije uspjela.");
-      return;
-    }
 
-    router.push(next);
+      if (!res.ok) {
+        setFormError(data?.error || "Neuspješna prijava. Provjerite podatke.");
+        return;
+      }
+
+      router.push(nextUrl);
+      router.refresh();
+    } catch {
+      setFormError("Došlo je do greške. Pokušajte ponovno.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white">
-      <div className="max-w-xl mx-auto px-6 py-10">
-        <p className="text-orange-600 font-semibold">EasyCut</p>
-        <h1 className="text-4xl font-extrabold tracking-tight mt-2">Prijava</h1>
-        <p className="text-gray-600 mt-2">
-          Ulogiraj se kako bi mogao rezervirati termin.
-        </p>
+    <main className="min-h-[calc(100vh-64px)] bg-gradient-to-b from-orange-50 to-white">
+      <div className="mx-auto flex max-w-xl flex-col px-4 py-10">
+        <div className="rounded-2xl border border-orange-100 bg-white p-6 shadow-sm sm:p-8">
+          <h1 className="text-2xl font-bold tracking-tight text-gray-900">
+            Prijava
+          </h1>
+          <p className="mt-2 text-sm text-gray-600">
+            Prijavite se kako biste mogli rezervirati termin.
+          </p>
 
-        <form
-          onSubmit={onSubmit}
-          className="bg-white border rounded-3xl p-8 shadow-sm mt-8"
-        >
-          <div className="grid gap-4">
+          {formError ? (
+            <div className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+              {formError}
+            </div>
+          ) : null}
+
+          <form onSubmit={onSubmit} className="mt-6 space-y-4">
             <div>
-              <label className="text-sm font-semibold text-gray-700">
+              <label className="mb-1 block text-sm font-medium text-gray-900">
                 Email
               </label>
               <input
-                className="mt-2 w-full border p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-200"
+                type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="email@example.com"
-                autoComplete="email"
-                type="email"
-                required
+                onBlur={() => setTouched((t) => ({ ...t, email: true }))}
+                placeholder="example@gmail.com"
+                className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
               />
-              {fieldErrors.email && (
-                <p className="mt-2 text-sm text-red-600">{fieldErrors.email}</p>
-              )}
+              {touched.email && emailError ? (
+                <p className="mt-1 text-sm text-red-600">{emailError}</p>
+              ) : null}
             </div>
 
             <div>
-              <label className="text-sm font-semibold text-gray-700">
+              <label className="mb-1 block text-sm font-medium text-gray-900">
                 Lozinka
               </label>
               <input
-                className="mt-2 w-full border p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-200"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                autoComplete="current-password"
-                required
+                onBlur={() => setTouched((t) => ({ ...t, password: true }))}
+                placeholder="Unesite lozinku"
+                className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
               />
-              {fieldErrors.password && (
-                <p className="mt-2 text-sm text-red-600">
-                  {fieldErrors.password}
-                </p>
-              )}
+              {touched.password && passwordError ? (
+                <p className="mt-1 text-sm text-red-600">{passwordError}</p>
+              ) : null}
             </div>
-
-            {msg && (
-              <div className="border rounded-2xl p-3 bg-orange-50 text-orange-800 text-sm">
-                {msg}
-              </div>
-            )}
 
             <button
-              className="w-full bg-orange-600 text-white font-semibold py-3 rounded-xl hover:bg-orange-700 transition disabled:opacity-60"
               type="submit"
-              disabled={loading}
+              disabled={!canSubmit}
+              className="w-full rounded-xl bg-orange-500 px-4 py-3 font-semibold text-white shadow-sm transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {loading ? "Prijava..." : "Prijavi se"}
+              {submitting ? "Prijava..." : "Prijavi se"}
             </button>
 
-            <div className="flex items-center justify-between text-sm pt-2">
-              <span />
-              <Link className="text-gray-700 hover:underline" href={`/auth/signup?next=${encodeURIComponent(next)}`}>
-                Nemaš račun? <span className="font-semibold text-orange-600">Registracija</span>
-              </Link>
-            </div>
-          </div>
-        </form>
-
-        <Link className="inline-flex mt-6 text-gray-700 hover:underline" href="/">
-          ← Povratak na početnu
-        </Link>
+            <p className="text-center text-sm text-gray-600">
+              Nemaš račun?{" "}
+              <a
+                href={`/auth/signup?next=${encodeURIComponent(nextUrl)}`}
+                className="font-semibold text-orange-600 hover:underline"
+              >
+                Registriraj se
+              </a>
+            </p>
+          </form>
+        </div>
       </div>
-    </div>
+    </main>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<main className="min-h-[calc(100vh-64px)]" />}>
+      <LoginContent />
+    </Suspense>
   );
 }

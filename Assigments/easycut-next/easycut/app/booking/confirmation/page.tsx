@@ -1,10 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 
-export default function BookingConfirmationPage() {
+/* =========================
+   INNER CONTENT (client-only)
+   ========================= */
+function BookingConfirmationContent() {
   const sp = useSearchParams();
   const router = useRouter();
   const id = sp.get("id");
@@ -148,6 +151,20 @@ export default function BookingConfirmationPage() {
   );
 }
 
+/* =========================
+   PAGE WRAPPER (Suspense)
+   ========================= */
+export default function BookingConfirmationPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-white" />}>
+      <BookingConfirmationContent />
+    </Suspense>
+  );
+}
+
+/* =========================
+   HELPER
+   ========================= */
 function Info({ label, value }: { label: string; value: string }) {
   return (
     <div className="border rounded-2xl p-4">
